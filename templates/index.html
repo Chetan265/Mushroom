@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Edible and Poisonous Mushroom Classification</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="cap_shape" placeholder="cap_shape" required="required" />
+        <input type="text" name="cap_surface" placeholder="cap_surface" required="required" />
+		<input type="text" name="cap_color" placeholder="cap_color" required="required" />
+    	<input type="text" name="bruises" placeholder="bruises" required="required" />
+    	<input type="text" name="odor" placeholder="odor" required="required" />
+        <input type="text" name="gill_attachment" placeholder="gill_attachment" required="required" />
+		<input type="text" name="gill_spacing" placeholder="gill_spacing" required="required" />
+    	<input type="text" name="gill_size" placeholder="gill_size" required="required" />
+    	<input type="text" name="gill_color" placeholder="gill_color" required="required" />
+        <input type="text" name="stalk_shape" placeholder="stalk_shape" required="required" />
+		<input type="text" name="stalk_root" placeholder="stalk_root" required="required" />
+    	<input type="text" name="stalk_surface_above_ring" placeholder="stalk_surface_above_ring" required="required" />
+    	<input type="text" name="stalk_surface_below_ring" placeholder="stalk_surface_below_ring" required="required" />
+        <input type="text" name="stalk_color_above_ring" placeholder="stalk_color_above_ring" required="required" />
+		<input type="text" name="stalk_color_below_ring" placeholder="stalk_color_below_ring" required="required" />
+    	<input type="text" name="veil_color" placeholder="veil_color" required="required" />
+    	<input type="text" name="ring_number" placeholder="ring_number" required="required" />
+        <input type="text" name="ring_type" placeholder="ring_type" required="required" />
+		<input type="text" name="spore_print_color" placeholder="spore_print_color" required="required" />
+    	<input type="text" name="population" placeholder="population" required="required" />
+    	<input type="text" name="habitat" placeholder="habitat" required="required" />
+	
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
