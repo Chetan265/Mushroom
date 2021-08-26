@@ -1,2 +1,2 @@
 Deployment link
-https://mushroom-classes.herokuapp.com/predict
+https://mushroom-classes.herokuapp.com/
