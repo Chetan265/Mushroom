@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 
 app = Flask(__name__)
-model = pickle.load(open('mushroom.pkl', 'rb'))
+model = pickle.load(open('mushrooms.pkl', 'rb'))
 
 @app.route('/',methods=['GET'])
 def Home():
@@ -1010,11 +1010,11 @@ def predict():
             
         text = np.array([[cap_shape_c,cap_shape_f,cap_shape_k,cap_shape_s,cap_shape_x,
                             cap_surface_g,cap_surface_s,cap_surface_y,cap_color_c,
-                            cap_color_e,cap_color_g,cap_color_n,cap_color_p,cap_color_r,cap_color_u,
-                            cap_color_w,cap_color_y,bruises_t,odor_c,odor_f,
-                            odor_l,odor_m,odor_n,odor_p,odor_s,odor_y,gill_attachment_f,gill_spacing_w,
-                            gill_size_n,gill_color_e,
-                            gill_color_g,gill_color_h,gill_color_k,gill_color_n,gill_color_o,gill_color_p,
+                            cap_color_e,cap_color_g,cap_color_n,cap_color_p,cap_color_r,
+                            cap_color_u,cap_color_w,cap_color_y,bruises_t,odor_c,odor_f,
+                            odor_l,odor_m,odor_n,odor_p,odor_s,odor_y,gill_attachment_f,
+                            gill_spacing_w,gill_size_n,gill_color_e,gill_color_g,gill_color_h,
+                            gill_color_k,gill_color_n,gill_color_o,gill_color_p,
                             gill_color_r,gill_color_u,gill_color_w,gill_color_y,stalk_shape_t,
                             stalk_root_c,stalk_root_e,stalk_root_m,stalk_root_r,
                             stalk_surface_above_ring_k,stalk_surface_above_ring_s,stalk_surface_above_ring_y,
@@ -1033,12 +1033,12 @@ def predict():
                             population_n,population_s,population_v,population_y,habitat_g,
                             habitat_l,habitat_m,habitat_p,habitat_u,habitat_w]])
         prediction = model.predict(text)
-        if prediction == 1:
-            label = 'Poissnous'
+        if prediction == 0:
+            label = 'Edible'
         else:
-            label = 'edible'
+            label = 'Poissonous'
 
-        return render_template('index.html', prediction_text='Mushroom is {}'.format(label))
+        return render_template('result.html', prediction_text='Mushroom is {}'.format(label))
 
 
 
@@ -1046,3 +1046,4 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
